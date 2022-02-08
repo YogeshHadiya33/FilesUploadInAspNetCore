@@ -1,0 +1,45 @@
+﻿@model UploadFile.Models.SingleFileModel
+
+@{
+    ViewData["Title"] = "Single File Upload";
+
+}
+<form asp-action="Upload" asp-controller="Upload" method="post" enctype = "multipart/form-data">
+    @if (Model.IsResponse)
+    {
+        if (Model.IsSuccess)
+        {
+            <div class="alert alert-success">
+                @Model.Message
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger">
+                @Model.Message
+            </div>
+        }
+    }
+    <div class="row mt-2">
+        <div class="col-12">
+            <label class="col-form-label">Enter File Name For Save</label>
+            <input asp-for="FileName" class="form-control" />
+            <span asp-validation-for="FileName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mt-2">
+        <div class="col-12">
+            <label class="col-form-label">Select File</label>
+            <input asp-for="File" class="form-control" />
+            <span asp-validation-for="File" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="row mt-2">
+        <div class="col-12">
+            <button type="submit" class="btn btn-success">Upload File</button>
+        </div>
+    </div>
+</form>
